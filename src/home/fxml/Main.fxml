@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.Controller">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="108.0" style="-fx-background-color: #4286f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Home" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLANE" />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Your Flights" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id = "timer" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="37.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Time" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="108.0" prefHeight="37.0" prefWidth="525.0" style="-fx-background-color: #043b93#043b93;" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="205.0" layoutY="10.0" text="S.E.G Airlines" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="123.0" layoutY="67.0" prefHeight="224.0" prefWidth="148.0">
+         <children>
+            <Label layoutX="15.0" layoutY="14.0" text="Bringing You to the" />
+            <Label layoutX="15.0" layoutY="31.0" text="Top 5 Destinations!" />
+            <Label layoutX="52.0" layoutY="58.0" text="Atlanta" />
+            <Label layoutX="45.0" layoutY="84.0" text="New York" />
+            <Label layoutX="37.0" layoutY="112.0" text="Los Angeles" />
+            <Label layoutX="43.0" layoutY="140.0" text="Las Vegas" />
+            <Label layoutX="15.0" layoutY="212.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="111.0" layoutY="307.0" prefHeight="27.0" prefWidth="517.0" style="-fx-background-color: #4286f4 #4286f4;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <Label layoutX="180.0" layoutY="5.0" text="Flights Departing Soon" />
+         </children>
+      </Pane>
+      <AnchorPane layoutX="301.0" layoutY="50.0" prefHeight="248.0" prefWidth="313.0">
+         <children>
+            <Button fx:id="bookFlightBtn" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#getFlightScene" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Book A Flight" />
+            <Button layoutX="86.0" layoutY="131.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Check In" />
+            <Button layoutX="163.0" layoutY="12.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Manage Flights" />
+         </children>
+      </AnchorPane>
+      <TableView layoutX="111.0" layoutY="336.0" prefHeight="71.0" prefWidth="517.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="To " />
+          <TableColumn prefWidth="75.0" text="From" />
+            <TableColumn prefWidth="75.0" text="Depature" />
+            <TableColumn prefWidth="75.0" text="Arrival" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
