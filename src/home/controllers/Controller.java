@@ -31,8 +31,14 @@ public class Controller implements Initializable{
     }
 
 
-    //When This button is clicked, we move to the BookFlights Scene
-    public void getFlightScene(javafx.event.ActionEvent actionEvent) throws IOException{
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     * When This button is clicked, we move to the BookFlights Scene
+     */
+    @FXML
+    public void getBookFlightScene(javafx.event.ActionEvent actionEvent) throws IOException{
         //we load the fxml file we want the program to pull information from
         Parent bookFlights = FXMLLoader.load(getClass().getResource("../fxml/BookFlights.fxml"));
         Scene bookFlightScene = new Scene(bookFlights);
@@ -49,4 +55,26 @@ public class Controller implements Initializable{
         System.out.println("Book Flight Button Clicked");
 
     }
+
+    /**
+     *
+     * @param actionEvent
+     * @throws IOException
+     * This method brings user to list of flights
+     */
+    @FXML
+    public void getYourFlightsScene(javafx.event.ActionEvent actionEvent) throws IOException{
+
+        Parent yourFlights = FXMLLoader.load(getClass().getResource("../fxml/YourFlights.fxml"));
+        Scene yourFlightsScene = new Scene(yourFlights);
+        Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(yourFlightsScene);
+        window.show();
+
+        //Testing to make sure button click responds
+        System.out.println("Your Flight Button Clicked");
+
+    }
+
+
 }

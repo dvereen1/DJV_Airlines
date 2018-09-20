@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.YourFlightsController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="108.0" style="-fx-background-color: #4286f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#goHome" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Home" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLANE" />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Your Flights" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER" />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="37.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Time" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <ScrollPane layoutX="123.0" layoutY="33.0" prefHeight="320.0" prefWidth="200.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="301.0" prefWidth="200.0" style="-fx-background-color: #F4B042#F4B042;">
+               <children>
+                  <Label layoutX="13.0" layoutY="6.0" text="User tickets will appear here" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Pane layoutX="343.0" layoutY="83.0" prefHeight="200.0" prefWidth="227.0" style="-fx-background-color: #B042F4#B042F4;">
+         <children>
+            <Label alignment="CENTER" layoutX="21.0" layoutY="6.0" text="More detailed view of &#10;selected ticket will appear here" textAlignment="CENTER" textFill="WHITE" />
+            <Button layoutX="84.0" layoutY="159.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="74.0" text="Cancel" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

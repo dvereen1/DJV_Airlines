@@ -1,80 +1,194 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.Controller">
    <children>
-      <VBox prefHeight="400.0" prefWidth="108.0" style="-fx-background-color: #4286f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="128.0" layoutY="-1.0" prefHeight="30.0" prefWidth="832.0" style="-fx-background-color: #043b93#043b93;" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="27.0" prefWidth="111.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Home" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView glyphName="PLANE" />
-               </graphic>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </padding>
-            </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="27.0" prefWidth="112.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Your Flights" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView glyphName="USER" />
-               </graphic>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </padding>
-            </Button>
-            <Button fx:id = "timer" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="37.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="114.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Time" textFill="WHITE">
-               <graphic>
-                  <FontAwesomeIconView />
-               </graphic>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </padding>
-            </Button>
+            <Label layoutX="352.0" layoutY="8.0" text="S.E.G Airlines" textFill="WHITE" />
+         </children>
+      </Pane>
+      <VBox prefHeight="540.0" prefWidth="115.0" style="-fx-background-color: #121920;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="95.0" prefWidth="107.0">
+               <children>
+                  <ImageView fitHeight="98.0" fitWidth="129.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@../../res/wing1.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <VBox prefHeight="111.0" prefWidth="109.0" style="-fx-background-color: #4286f4;">
+               <children>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Home" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLANE" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#getYourFlightsScene" prefHeight="37.0" prefWidth="130.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Your Flights" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER" />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="timer" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="37.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="131.0" style="-fx-background-color: #4286f4#4286f4 #4286f4#4286f4;" text="Time" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView />
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </VBox>
-      <Pane layoutX="108.0" prefHeight="37.0" prefWidth="525.0" style="-fx-background-color: #043b93#043b93;" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="128.0" layoutY="29.0" prefHeight="365.0" prefWidth="832.0">
          <children>
-            <Label layoutX="205.0" layoutY="10.0" text="S.E.G Airlines" textFill="WHITE" />
+            <VBox prefHeight="365.0" prefWidth="275.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="276.0" prefWidth="250.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <ImageView fitHeight="225.0" fitWidth="250.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../../res/cockpit.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <JFXButton fx:id="bookFlightBtn" buttonType="RAISED" onAction="#getBookFlightScene" ripplerFill="#fcfcfc" style="-fx-background-color: #7aadff#7aadff #7aadff#7aadff;" text="Book A Flight">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Pane prefHeight="86.0" prefWidth="256.0">
+                     <children>
+                        <Label layoutX="16.0" layoutY="14.0" prefHeight="58.0" prefWidth="244.0" text="Taking you to the top 5 places to &#10;in the U.S.&#10;" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="365.0" prefWidth="275.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="277.0" prefWidth="293.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <ImageView fitHeight="225.0" fitWidth="260.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../../res/liberty.jpeg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <JFXButton buttonType="RAISED" onAction="#getYourFlightsScene" prefHeight="25.0" prefWidth="116.0" ripplerFill="#fcfcfc" style="-fx-background-color: #7aadff#7aadff #7aadff#7aadff;" text="Manage Tickets">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Pane prefHeight="86.0" prefWidth="256.0">
+                     <children>
+                        <Label layoutX="9.0" layoutY="13.0" prefHeight="58.0" prefWidth="244.0" text="From New York City, Miami, Las Vegas, Los Angeles, and Atlanta we've got you covered&#10;" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox layoutX="272.0" layoutY="10.0" prefHeight="365.0" prefWidth="275.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="277.0" prefWidth="293.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <ImageView fitHeight="225.0" fitWidth="250.0" pickOnBounds="true" smooth="false">
+                           <image>
+                              <Image url="@../../res/wing3.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </ImageView>
+                        <JFXButton buttonType="RAISED" ripplerFill="#fcfcfc" style="-fx-background-color: #7aadff#7aadff #7aadff#7aadff;" text="Check In">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Pane prefHeight="86.0" prefWidth="256.0">
+                     <children>
+                        <Label layoutX="9.0" layoutY="13.0" prefHeight="58.0" prefWidth="244.0" text="Providing high comfort for low cost&#10;" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
          </children>
-      </Pane>
-      <Pane layoutX="123.0" layoutY="67.0" prefHeight="224.0" prefWidth="148.0">
-         <children>
-            <Label layoutX="15.0" layoutY="14.0" text="Bringing You to the" />
-            <Label layoutX="15.0" layoutY="31.0" text="Top 5 Destinations!" />
-            <Label layoutX="52.0" layoutY="58.0" text="Atlanta" />
-            <Label layoutX="45.0" layoutY="84.0" text="New York" />
-            <Label layoutX="37.0" layoutY="112.0" text="Los Angeles" />
-            <Label layoutX="43.0" layoutY="140.0" text="Las Vegas" />
-            <Label layoutX="15.0" layoutY="212.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="111.0" layoutY="307.0" prefHeight="27.0" prefWidth="517.0" style="-fx-background-color: #4286f4 #4286f4;" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="5.0">
-         <children>
-            <Label layoutX="180.0" layoutY="5.0" text="Flights Departing Soon" />
-         </children>
-      </Pane>
-      <AnchorPane layoutX="301.0" layoutY="50.0" prefHeight="248.0" prefWidth="313.0">
-         <children>
-            <Button fx:id="bookFlightBtn" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#getFlightScene" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Book A Flight" />
-            <Button layoutX="86.0" layoutY="131.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Check In" />
-            <Button layoutX="163.0" layoutY="12.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="138.0" style="-fx-background-color: #7aadff#7aadff;" text="Manage Flights" />
-         </children>
-      </AnchorPane>
-      <TableView layoutX="111.0" layoutY="336.0" prefHeight="71.0" prefWidth="517.0">
+      </HBox>
+      <TableView layoutX="346.0" layoutY="394.0" prefHeight="127.0" prefWidth="593.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="To " />
-          <TableColumn prefWidth="75.0" text="From" />
-            <TableColumn prefWidth="75.0" text="Depature" />
-            <TableColumn prefWidth="75.0" text="Arrival" />
+          <TableColumn prefWidth="107.0" text="Atlanta" />
+          <TableColumn minWidth="0.0" prefWidth="110.0" text="New York" />
+            <TableColumn minWidth="0.0" prefWidth="121.0" text="Las Vegas" />
+            <TableColumn minWidth="0.0" prefWidth="139.0" text="Los Angeles" />
+            <TableColumn minWidth="0.0" prefWidth="114.0" text="Miami" />
         </columns>
       </TableView>
+      <Label layoutX="155.0" layoutY="439.0" prefHeight="37.0" prefWidth="177.0" text="Flights Leaving Soon">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

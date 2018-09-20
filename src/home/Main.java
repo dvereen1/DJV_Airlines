@@ -1,5 +1,6 @@
 package home;
 
+import home.DB_Connection.DBConnect;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +12,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
+        DBConnect.connect();
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/SplashPage.fxml"));
         primaryStage.setTitle("S.E.G Airlines");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
