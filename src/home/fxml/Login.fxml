@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.LoginController">
+   <children>
+      <Label fx:id="dbStatus" layoutX="27.0" layoutY="27.0" text="DB Status" />
+      <JFXTextField fx:id="userName" layoutX="276.0" layoutY="73.0" prefHeight="32.0" prefWidth="239.0" />
+      <JFXPasswordField fx:id="password" layoutX="275.0" layoutY="164.0" prefHeight="27.0" prefWidth="239.0" />
+      <Label layoutX="119.0" layoutY="97.0" text="Username:" />
+      <Label layoutX="119.0" layoutY="183.0" text="Password:" />
+      <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="148.0" layoutY="330.0" onAction="#login" prefHeight="27.0" prefWidth="75.0" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Login" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="377.0" />
+      <JFXButton buttonType="RAISED" layoutX="384.0" layoutY="330.0" prefHeight="27.0" prefWidth="75.0" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Sign Up" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="141.0" />
+      <JFXComboBox fx:id="combobox" layoutX="219.0" layoutY="242.0" promptText="Admin / Passenger" />
+      <Label fx:id="loginStatus" layoutX="27.0" layoutY="56.0" text="Login Status" />
+   </children>
+</AnchorPane>

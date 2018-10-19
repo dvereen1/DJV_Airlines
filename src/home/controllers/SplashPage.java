@@ -18,9 +18,26 @@ public class SplashPage {
         Scene home = new Scene(homePage);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.close();
+
         window.setScene(home);
         window.show();
         System.out.println("Begin Journey Button Clicked");
+
+    }
+
+
+    @FXML
+    public void goLogin(ActionEvent actionEvent) throws IOException{
+        Parent loginPage = FXMLLoader.load(getClass().getResource("../fxml/Login.fxml"));
+        Scene login = new Scene(loginPage);
+
+        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        window.close();
+
+        window.setScene(login);
+        window.show();
+        System.out.println("Login Clicked");
 
     }
 }

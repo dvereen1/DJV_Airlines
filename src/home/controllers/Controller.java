@@ -1,5 +1,6 @@
 package home.controllers;
 
+import home.DB_Models.Passengers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -21,12 +25,55 @@ public class Controller implements Initializable{
     //Button bookFlightBtn;
 
     @FXML
-    Button timer;
+    private Button timer;
+    @FXML
+    private ImageView imgView1;
+    @FXML
+    private ImageView imgView2;
+    @FXML
+    private ImageView imgView3;
+    @FXML
+    private AnchorPane pane1;
+    @FXML
+    private Label firstLastName;
+
+    private boolean isLoggedIn;
+    private String fName;
+    private String lName;
+
+    private String username;
+
+    String text;
+
+
+    Passengers currentPassenger;
+
+
+
+
 
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+            Image img1 = new Image(getClass().getResource("../../res/cockpit.jpg").toExternalForm(),true);
+            Image img2 = new Image(getClass().getResource("../../res/wing2.jpg").toExternalForm(),true);
+            Image img3 = new Image(getClass().getResource("../../res/wing3.jpg").toExternalForm(),true);
+
+            imgView1.setPreserveRatio(false);
+            imgView2.setPreserveRatio(false);
+            imgView3.setPreserveRatio(false);
+           imgView1.setImage(img1);
+           imgView2.setImage(img2);
+           imgView3.setImage(img3);
+
+        firstLastName.setText(fName + " " + lName);
+
+
+
+
+
 
     }
 
@@ -39,8 +86,14 @@ public class Controller implements Initializable{
      */
     @FXML
     public void getBookFlightScene(javafx.event.ActionEvent actionEvent) throws IOException{
+
         //we load the fxml file we want the program to pull information from
-        Parent bookFlights = FXMLLoader.load(getClass().getResource("../fxml/BookFlights.fxml"));
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/BookFlights.fxml"));
+        Parent bookFlights = loader.load();
+
+        BookFlightsController bfc = loader.getController();
+        bfc.getBUserName(username);
+
         Scene bookFlightScene = new Scene(bookFlights);
 
         //the following line gets the current stage
@@ -53,6 +106,9 @@ public class Controller implements Initializable{
 
         //Testing to make sure button click responds
         System.out.println("Book Flight Button Clicked");
+        System.out.println("First name from getBookFlightScene method"+fName);
+
+        isLog();
 
     }
 
@@ -73,8 +129,30 @@ public class Controller implements Initializable{
 
         //Testing to make sure button click responds
         System.out.println("Your Flight Button Clicked");
+        System.out.println("This is the username from main page: " + this.username);
 
     }
+
+    public void getPassengerInfo(String fName, String lName, String username){
+        this.isLoggedIn = true;
+        firstLastName.setText(fName + " " + lName);
+
+        this.fName = fName;
+        this.lName = lName;
+        this.username = username;
+        System.out.println("This si the username from getPassengerInfo method: "+this.username);
+
+
+    }
+
+   public void isLog(){
+        if(this.isLoggedIn){
+            System.out.println("Passenger logged in");
+           // firstLastName.setText(fName + " " + lName);
+        }
+   }
+
+   public boolean getLog(){ return isLoggedIn; }
 
 
 }

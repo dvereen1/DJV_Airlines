@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,29 +8,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.SplashPage">
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.SplashPage">
 
-    <ImageView fx:id="imageView1" fitHeight="406.0" fitWidth="600.0">
+    <ImageView fx:id="imageView1" fitHeight="540.0" fitWidth="1002.0">
       <image>
          <Image url="@../../res/splashPage.jpeg" />
       </image></ImageView>
-   <Pane layoutX="194.0" layoutY="6.0" prefHeight="54.0" prefWidth="255.0">
-      <children>
-         <Label layoutX="36.0" layoutY="13.0" prefHeight="29.0" prefWidth="183.0" text="S.E.G Air Lines">
-            <font>
-               <Font size="24.0" />
-            </font>
-         </Label>
-      </children>
-   </Pane>
+   <Pane layoutX="194.0" layoutY="6.0" prefHeight="54.0" prefWidth="255.0" />
    <Pane layoutX="262.0" layoutY="289.0" prefHeight="117.0" prefWidth="119.0">
       <children>
-         <Button onAction="#goMain" layoutX="6.0" layoutY="14.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="108.0" style="-fx-opacity: .7;" text="Begin Your &#10;   Journey " textFill="#0d2cf8">
-            <font>
-               <Font name="System Bold" size="13.0" />
-            </font>
-         </Button>
+         <JFXButton buttonType="RAISED" layoutX="33.0" layoutY="28.0" onAction="#goMain" prefHeight="62.0" prefWidth="119.0" ripplerFill="WHITE" style="-fx-border-color: #ffffff; -fx-border-radius: 2;" text="Begin Your &#10;Journey" textAlignment="CENTER" textFill="WHITE" />
       </children>
    </Pane>
+   <JFXButton buttonType="RAISED" layoutX="585.0" layoutY="317.0" onAction="#goLogin" prefHeight="62.0" prefWidth="119.0" ripplerFill="WHITE" style="-fx-border-color: #ffffff; -fx-border-radius: 2;" text="Login" textAlignment="CENTER" textFill="WHITE" />
+   <Label alignment="CENTER" layoutX="394.0" layoutY="29.0" prefHeight="29.0" prefWidth="183.0" text="S.E.G Air Lines">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
 
 </AnchorPane>

@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        DBConnect.connect();
+        //DBConnect.connect();
         Parent root = FXMLLoader.load(getClass().getResource("fxml/SplashPage.fxml"));
         primaryStage.setTitle("S.E.G Airlines");
         primaryStage.setScene(new Scene(root));

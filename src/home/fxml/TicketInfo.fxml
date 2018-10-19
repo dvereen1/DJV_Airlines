@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.TicketInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.TicketInfoController">
    <children>
-      <ImageView fitHeight="93.0" fitWidth="215.0" layoutX="14.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../res/lasVegas.jpeg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="93.0" fitWidth="215.0" layoutX="334.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../res/nyc.jpeg" />
-         </image>
+      <ImageView fx:id="sourceImg" fitHeight="93.0" fitWidth="150.0" layoutX="14.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="destImg" fitHeight="93.0" fitWidth="150.0" layoutX="334.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
          <viewport>
             <Rectangle2D />
          </viewport>
       </ImageView>
-      <Label alignment="CENTER" layoutX="137.0" layoutY="-4.0" prefHeight="36.0" prefWidth="227.0" text="Ticket #12929094842">
+      <Label fx:id="ticketId" alignment="CENTER" layoutX="137.0" layoutY="-4.0" prefHeight="36.0" prefWidth="227.0" text="Ticket #12929094842">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="47.0" text="Las Vegas&#10;McCarran International&#10;Airport" textAlignment="CENTER" />
-      <Label layoutX="377.0" layoutY="47.0" text="New York&#10;LaGaurdia&#10;Airport" textAlignment="CENTER" />
-      <Label alignment="TOP_CENTER" layoutX="187.0" layoutY="106.0" prefHeight="60.0" prefWidth="126.0" text="\$ 130&#10;Depature: 1:30 P.M.&#10;Arrival: 3:45 P.M." textAlignment="CENTER" />
-      <Button fx:id = "confirmBtn" layoutX="165.0" layoutY="209.0" mnemonicParsing="false" onAction="#purchaseTicket" text="Confirm" />
-      <Button fx:id = "returnBtn" layoutX="275.0" layoutY="209.0" mnemonicParsing="false" onAction="#returnPrior" text="Return" />
+      <Label fx:id="source" layoutX="14.0" layoutY="56.0" text="Las Vegas" textAlignment="CENTER" />
+      <Label fx:id="destination" layoutX="334.0" layoutY="56.0" text="New York" textAlignment="CENTER" />
+      <Label fx:id="price" alignment="TOP_CENTER" layoutX="200.0" layoutY="106.0" prefHeight="17.0" prefWidth="98.0" text="\$130" />
       <Line endX="130.0" layoutX="250.0" layoutY="32.0" startX="-140.0" />
+      <Label fx:id="departTime" layoutX="189.0" layoutY="125.0" text="Depature: 1:30 P.M." />
+      <Label fx:id="arrivalTime" layoutX="196.0" layoutY="144.0" text="Arrival: 3:45 P.M." />
+      <JFXButton buttonType="RAISED" layoutX="179.0" layoutY="199.0" onAction="#purchaseTicket" style="-fx-background-color: #4286F4#4286F4;" text="Confirm" textFill="WHITE" />
+      <JFXButton layoutX="260.0" layoutY="199.0" onAction="#returnPrior" style="-fx-background-color: #4286F4#4286F4;" text="Return" textFill="#fffefe" />
    </children>
 </AnchorPane>
