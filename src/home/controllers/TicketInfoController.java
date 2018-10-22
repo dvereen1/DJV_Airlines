@@ -1,5 +1,6 @@
 package home.controllers;
 
+import com.jfoenix.controls.JFXComboBox;
 import home.DB_Connection.DBConnect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -45,26 +49,39 @@ public class TicketInfoController implements Initializable{
 
         @FXML
         private Label arrivalTime;
-
         @FXML
         private ImageView sourceImg;
-
         @FXML
         private ImageView destImg;
+        @FXML
+        private JFXComboBox carbCB;
+        @FXML
+        private JFXComboBox mealCB;
+        @FXML
+        private JFXComboBox sideCB;
+        @FXML
+        private VBox mealVBox;
+
 
         private int ticketID;
         private boolean isLoggedIn;
         private String username;
+        private String fName;
+        private String lName;
         private String tPrice;
+        private int flightID;
+
+    private JFXComboBox mainDish;
 
 
 
 
       private String queryString = "SELECT flightID FROM Flights WHERE flightName= ? AND departureTime = ? AND arrivalTime = ?";
-      private String queryString1 = "SELECT MIN(ticketID) FROM Ticket WHERE owner IS null";
+      private String queryString1 = "SELECT MIN(ticketID) FROM Ticket WHERE owner IS NULL AND flightID = ?";
       private String queryString2 =  "SELECT price FROM Ticket WHERE ticketID = ?";
+      private String insertString = "INSERT INTO Meals(mealID, mealType, mainMeat, mainCarb, side) VALUES (?,?,?,?,?)";
 
-
+    //WHERE owner IS null
     /**
      *
      * @param actionEvent
@@ -80,15 +97,16 @@ public class TicketInfoController implements Initializable{
          //System.out.println(source);
        /// if( source == "confirmBtn"){
 
-
-
             if(!isLoggedIn){
+
 
                 FXMLLoader loader =  new FXMLLoader(getClass().getResource("../fxml/UserRegistration.fxml"));
                 Parent register = loader.load();
                 UserRegistrationController uc = loader.getController();
                 uc.getTicketInfo(ticketID, source.getText(), destination.getText(),
                         departTime.getText(), arrivalTime.getText(), price.getText());
+                uc.mealInfo(mealCB.getValue().toString(),mainDish.getValue().toString(),
+                        carbCB.getValue().toString(), sideCB.getValue().toString(), flightID);
 
                 Scene registerScene = new Scene(register);
 
@@ -96,15 +114,33 @@ public class TicketInfoController implements Initializable{
                 regWindow.setScene(registerScene);
                 regWindow.show();
 
+
             }else{
+                //
                 String[] priced = price.getText().split(" ");
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/AlertBox.fxml"));
                 Parent root = loader.load();
                 AlertBoxController ab = loader.getController();
-                ab.ticketConfirmation("Confirm purchase of " + priced[1] + " for ticket # " + this.ticketID, "from " +this.source.getText(),
-                        "to "+ this.destination.getText());
-                ab.setABUserName(username);
+                ab.ticketConfirmation("Confirm purchase of " + priced[1] + " for ticket # " + this.ticketID
+                        + "\n Confirmation # c" + this.ticketID,
+                        "from " +this.source.getText(), "to "+ this.destination.getText());
+                ab.mealInfo( mealCB.getValue().toString(), mainDish.getValue().toString(), carbCB.getValue().toString(),
+                        sideCB.getValue().toString(), flightID);
+/*
+                 System.out.println("Below is from the tickInfocontroller: ");
+
+                System.out.println("This is mealType: " + mealCB.getEditor().getText());
+                System.out.println("This is mainMeat " + mainDish.getEditor().getText());
+                System.out.println("This is mainCarb: " + carbCB.getEditor().getText());
+                System.out.println("This is side: " + sideCB.getEditor().getText());
+                System.out.println("This is flightId: " + flightID);*/
+
+                ab.setABUserName(username, fName, lName);
                 ab.setABTicketId(ticketID);
+
+                //The below code is if wanted to trigger a dialog
+
                 //Dialog dialog =  new Dialog();
                 //dialog.setWidth(600);
                 //dialog.setHeight(400);
@@ -131,18 +167,23 @@ public class TicketInfoController implements Initializable{
 
     @FXML
     public void returnPrior(ActionEvent actionEvent) throws IOException{
-        Parent prior = FXMLLoader.load(getClass().getResource("../fxml/BookFlights.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/BookFlights.fxml"));
+        Parent prior = loader.load();
+        BookFlightsController bfc = loader.getController();
+        bfc.getBUserName(username, fName, lName);
         Scene priorScene = new Scene(prior);
+
 
         Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(priorScene);
         window.show();
+
         System.out.println("Return button clicked");
 
     }
 
     public void displayTicketInfo(int source, int dest, String dTime, String aTime, String flightName){
-
+        System.out.println(flightName);
 
         try{
             Connection conn = DBConnect.getConnection();
@@ -154,30 +195,42 @@ public class TicketInfoController implements Initializable{
             pr.setString(3, aTime);
 
             ResultSet resultSet = pr.executeQuery();
-
+             flightID = resultSet.getInt(1);
             //Creating prepared Statement to get ticketID
             PreparedStatement pr1 = conn.prepareStatement(queryString1);
-           // pr1.setInt(1, resultSet.getInt(1));
+             pr1.setInt(1, flightID);
 
 
             ResultSet resultSet1 = pr1.executeQuery();
             ticketID = resultSet1.getInt(1);
 
-            System.out.println("This is the ticket id: " + ticketID);
-             pr1.close();
+            System.out.println("This is the ticket id: ");
+
+
+
+            //pr1.close();
+
             //Creating prepared statement to get price for next ticket that doesn't
             //have an owner.
-            //PreparedStatement pr2 = conn.prepareStatement(queryString2);
-           // pr2.setInt(1, ticketID);
-            //ResultSet resultSet2 = pr2.executeQuery(queryString2);
-           // tPrice = resultSet2.getString(1);
+
+            PreparedStatement pr2 = conn.prepareStatement(queryString2);
+            pr2.setInt(1, ticketID);
+            ResultSet resultSet2 = pr2.executeQuery();
+            tPrice = resultSet2.getString(1);
 
 
-            pr.close();
+
+
+
+
+
+
+
+            //pr.close();
 
             conn.close();
 
-            resultSet.close();
+            //resultSet.close();
         }catch(SQLException err){
             System.err.println(err);
         }
@@ -301,18 +354,71 @@ public class TicketInfoController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
 
+
+        mealCB.getItems().addAll("Standard", "Vegetarian", "Vegan");
+
+        carbCB.getItems().addAll("Mashed Potatoes & Gravy", "Creamy Rice", "Pasta");
+
+        sideCB.getItems().addAll("Mixed Veggies", "Classic Fries", "Lush Salad");
+
+        mealCB.getSelectionModel().selectedIndexProperty().addListener((ob, oldVal, newVal) ->{
+            addComboBox(mealCB.getValue().toString());
+            System.out.println("Combobox changed");
+        });
+
+
     }
 
-    public void getTUserName(String username){
+    public void getTUserName(String username, String fName, String lName){
         this.isLoggedIn = true;
 
 
         this.username = username;
+        this.fName = fName;
+        this.lName =lName;
         System.out.println("This si the username from Ticket controller: "+ this.username);
+        System.out.println("This si the username from Ticket controller: "+ this.fName);
+        System.out.println("This si the username from Ticket controller: "+ this.lName);
 
 
     }
 
+    public void addComboBox(String meal){
+        System.out.println("Entered the addComboBox method, String passed in: " + meal);
+
+
+        switch(meal){
+            case "Standard":
+
+                if(mealVBox.getChildren() != null) {
+                    mealVBox.getChildren().remove(mainDish);
+                }
+                mainDish = new JFXComboBox();
+                mainDish.getItems().addAll("Beef", "Chicken", "Pork");
+                mainDish.setValue("Select Dish");
+                mealVBox.getChildren().add(mainDish);
+                break;
+            case "Vegetarian":
+                if(mealVBox.getChildren() != null) {
+                    mealVBox.getChildren().remove(mainDish);
+                }
+                mainDish = new JFXComboBox();
+                mainDish.getItems().addAll("Morningstar Farms", "Eggplant", "Tofu");
+                mainDish.setValue("Select Dish");
+                mealVBox.getChildren().add(mainDish);
+                break;
+            case "Vegan":
+                if(mealVBox.getChildren() != null) {
+                    mealVBox.getChildren().remove(mainDish);
+                }
+                mainDish = new JFXComboBox();
+                mainDish.getItems().addAll("Tofu", "Eggplant", "Tempeh");
+                mainDish.setValue("Select Dish");
+                mealVBox.getChildren().add(mainDish);
+                break;
+        }
+
+    }
 
    /* public void getTicketInfo(int id, String source, String dest, String depart, String arrive, String price){
         this.ticketID = id;

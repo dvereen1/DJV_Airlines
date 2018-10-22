@@ -44,11 +44,16 @@ public class UserRegistrationController implements Initializable{
     private PasswordField password;
 
     private int ticketID;
+    private int flightId;
     private String source;
     private String dest;
     private String depart;
     private String arrive;
     private String price;
+    private String mealType;
+    private String mainMeat;
+    private String mainCarb;
+    private String side;
 
 
     //Below is just an array of the variables created above this array will be used in
@@ -78,14 +83,23 @@ public class UserRegistrationController implements Initializable{
             System.out.println("This is the ticket id: " + this.ticketID);
             ab.ticketConfirmation("Confirm purchase of $" + price + " for ticket # " + Integer.toString(this.ticketID), "from " + this.source,
                    "to "+ this.dest);
-            Dialog dialog =  new Dialog();
+            ab.setABTicketId(ticketID);
+
+            ab.setABUserName(username.getText(), fName.getText(), lName.getText());
+            ab.mealInfo(mealType,mainMeat, mainCarb, side, flightId);
+            /*Dialog dialog =  new Dialog();
 
             //dialog.setWidth(600);
             //dialog.setHeight(400);
             dialog.getDialogPane().setMinWidth(Region.USE_PREF_SIZE);
             dialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             dialog.getDialogPane().setContent(root);
-            dialog.show();
+            dialog.show();*/
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         }
 
 
@@ -207,6 +221,26 @@ public class UserRegistrationController implements Initializable{
         this.depart = depart;
         this.arrive = arrive;
         this.price = price;
+    }
+
+
+    public void mealInfo(String mealType,
+                         String mainMeat, String mainCarb, String side, int flightId){
+
+        this.mealType = mealType;
+        this.mainMeat = mainMeat;
+        this.mainCarb = mainCarb;
+        this.side = side;
+        this.flightId = flightId;
+
+        System.out.println("This is mealType: " + mealType);
+        System.out.println("This is mainMeat " + mainMeat);
+        System.out.println("This is mainCarb: " + mainCarb);
+        System.out.println("This is side: " + side);
+        System.out.println("This is flightId: " + flightId);
+
+
+
     }
 
 

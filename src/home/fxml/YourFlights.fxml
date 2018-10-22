@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.controllers.YourFlightsController">
    <children>
@@ -40,13 +41,19 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="343.0" layoutY="83.0" prefHeight="200.0" prefWidth="227.0" style="-fx-background-color: #B042F4#B042F4;">
+      <Pane layoutX="358.0" layoutY="15.0" prefHeight="289.0" prefWidth="227.0">
          <children>
-            <Label alignment="CENTER" layoutX="21.0" layoutY="6.0" text="More detailed view of &#10;selected ticket will appear here" textAlignment="CENTER" textFill="WHITE" />
-            <Button layoutX="84.0" layoutY="159.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="74.0" text="Cancel" />
+            <Label fx:id="ticketID" alignment="CENTER" layoutX="21.0" layoutY="6.0" prefHeight="37.0" prefWidth="185.0" text="Ticket #" textAlignment="CENTER" />
+            <Label fx:id="source" alignment="CENTER" layoutX="16.0" layoutY="72.0" prefHeight="109.0" prefWidth="85.0" textAlignment="CENTER" textFill="#030303" />
+            <Label fx:id="dest" alignment="CENTER" layoutX="128.0" layoutY="72.0" prefHeight="109.0" prefWidth="85.0" textAlignment="CENTER" />
+            <JFXButton buttonType="RAISED" layoutX="65.0" layoutY="231.0" onAction="#cancelFlight" style="-fx-background-color: #4286f4 #4286f4 #4286f4 #4286f4;" text="Cancel Flight" textFill="WHITE" />
+            <Label layoutX="34.0" layoutY="54.0" text="Source" />
+            <Label layoutX="135.0" layoutY="54.0" text="Destination" />
+            <Line endX="6.3443603515625" layoutX="92.0" layoutY="71.0" startX="-73.97674560546875" stroke="#4286f4" />
+            <Line endX="6.3443603515625" layoutX="204.0" layoutY="70.0" startX="-73.97674560546875" stroke="#4286f4" />
          </children>
       </Pane>
-      <JFXListView fx:id="ticketListView" layoutX="122.0" layoutY="12.0" prefHeight="376.0" prefWidth="200.0" />
-      <JFXButton buttonType="RAISED" layoutX="390.0" layoutY="323.0" onAction="#loadTickets" style="-fx-background-color: #4286f4 #4286f4;" text="See Your Flights" textFill="WHITE" />
+      <JFXListView fx:id="ticketListView" layoutX="122.0" layoutY="12.0" prefHeight="376.0" prefWidth="226.0" />
+      <JFXButton buttonType="RAISED" layoutX="403.0" layoutY="328.0" onAction="#loadTickets" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: #4286f4 #4286f4;" text="See Your Flights" textFill="WHITE" />
    </children>
 </AnchorPane>

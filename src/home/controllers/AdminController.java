@@ -137,7 +137,7 @@ public class AdminController implements Initializable{
     @FXML
     private void addFlights(ActionEvent event){
         String insertQueryString = "INSERT INTO Flights(flightID, flightName, sourceID, destinationID, arrivalDate, departureDate, arrivalTime, departureTime) VALUES (?,?,?,?,?,?,?,?)";
-        String insertQueryString1 = "INSERT INTO Ticket(flightID, ticketID, sourceID, destinationID, price, purchased) VALUES (?,?,?,?,?,?)";
+        String insertQueryString1 = "INSERT INTO Ticket(flightID, ticketID, sourceID, destinationID, price) VALUES (?,?,?,?,?)";
         try{
 
             ///Adding flights to database
@@ -147,7 +147,7 @@ public class AdminController implements Initializable{
             String[] departT = this.departTime.getEditor().getText().split("(:|\\s)");
             String[] arrivalT = this.arrivalTime.getEditor().getText().split("(:|\\s)");
 
-            String departT1 = departT[0].toString().concat(departT[1].toString());
+            String departT1 =  departT[0].toString().concat(departT[1].toString());
             String arrivalT1 = arrivalT[0].toString().concat(arrivalT[1].toString());
             stmt.setString(1, this.flightId.getText());
             stmt.setString(2, this.flightName.getText());
@@ -175,7 +175,7 @@ public class AdminController implements Initializable{
             stmt1.setString(3, this.sourceId.getText());
             stmt1.setString(4, this.destId.getText());
             stmt1.setString(5, this.price.getText());
-            stmt1.setBoolean(6, false);
+
 
 
             for(int i = 0; i < 2; i++){

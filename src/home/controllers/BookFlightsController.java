@@ -1,8 +1,6 @@
 package home.controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.*;
 import home.DB_Connection.DBConnect;
 import home.DB_Models.Flights;
 import javafx.collections.FXCollections;
@@ -44,12 +42,22 @@ public class BookFlightsController implements Initializable {
     @FXML
     private JFXListView<Flights> flightsListView;
 
+    @FXML
+    private JFXDatePicker dateLeave;
+    @FXML
+    private JFXTimePicker timeLeave;
+
     private ObservableList<Flights> flightsData;
-    private String queryString = "SELECT flightName, departureTime, arrivalTime  FROM Flights WHERE sourceID = ? AND destinationID = ?";
+    private String queryString = "SELECT flightName, departureTime, arrivalTime  FROM Flights WHERE sourceID = ? " +
+            "AND destinationID = ? AND departureDate = ? AND departureTime >= ?";
+
+    //private String queryString = "SELECT flightName, departureTime, arrivalTime  FROM Flights WHERE sourceID = ? " +
+            //"AND destinationID = ? AND departureDate = ? AND departureTime = ?";
 
     private Controller controller = new Controller();
     private boolean isLoggedIn;
-
+    private String fName;
+    private String lName;
     private String username;
     private Flights flier;
 
@@ -63,7 +71,14 @@ public class BookFlightsController implements Initializable {
 
         ////////////The code below will most likely be put into its own method in the Main class because it is reused several times///////
         //we load the fxml file we want the program to pull information from
-        Parent home = FXMLLoader.load(getClass().getResource("../fxml/Main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Main.fxml"));
+        Parent home = loader.load();
+        Controller mc = loader.getController();
+        if(isLoggedIn){
+            mc.getPassengerInfo(username, fName, lName);
+        }
+
+
         Scene homeScene = new Scene(home);
 
         //the following line gets the current stage
@@ -89,7 +104,14 @@ public class BookFlightsController implements Initializable {
     @FXML
     public void getYourFlightsScene(javafx.event.ActionEvent actionEvent) throws IOException{
 
-        Parent yourFlights = FXMLLoader.load(getClass().getResource("../fxml/YourFlights.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/YourFlights.fxml"));
+        Parent yourFlights = loader.load();
+        YourFlightsController yfc = loader.getController();
+        if(isLoggedIn){
+            yfc.getYFUserName(username, fName, lName);
+
+        }
+
         Scene yourFlightsScene = new Scene(yourFlights);
         Stage window = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(yourFlightsScene);
@@ -114,13 +136,20 @@ public class BookFlightsController implements Initializable {
         int sourceId = getSourceDestId(this.fromChoiceBox.getValue().toString());
         int destId = getSourceDestId(this.toChoiceBox.getValue().toString());
 
+
+
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/TicketInfo.fxml"));
         Parent ticketInfo = loader.load();
 
         TicketInfoController tic = loader.getController();
         tic.displayTicketInfo(sourceId, destId, flier.getDEPARTTIME(),
          flier.getARRIVALTIME(), flier.getNAME());
-        tic.getTUserName(username);
+        if(isLoggedIn){
+            tic.getTUserName(username, fName, lName);
+        }
+
 
         Scene ticketScene = new Scene(ticketInfo);
 
@@ -182,6 +211,35 @@ public class BookFlightsController implements Initializable {
 
 
 
+
+        String departT = timeLeave.getEditor().getText().toString();
+        //Here we are retrieving the hour at which the passenger wants to leave
+        String[] departTA = this.timeLeave.getEditor().getText().split(":");
+        System.out.println("First index in departTA array: " + departTA[0]);
+        System.out.println("departT : " + departT);
+
+        int timeRange1; // (Integer.parseInt(departTA[0]) + 5) - 12;
+
+        //Below we set timeRange1 equal to the the time the passenger wants to leave
+        //plus 5 additional hours
+        if(Integer.parseInt(departTA[0]) + 5 > 12){
+            timeRange1 = (Integer.parseInt(departTA[0]) + 5) - 12;
+        }else{
+             timeRange1 = (Integer.parseInt(departTA[0]) + 5);
+        }
+        /*if(timeRange1 < 0){
+            timeRange1 = Math.abs(timeRange1);
+        }*/
+
+        departTA[0] = Integer.toString(timeRange1);
+        String finalT = departTA[0] + ":" + departTA[1];
+
+
+       String departD = dateLeave.getEditor().getText().toString();
+
+        System.out.println("This is the time start range to leave: " + departT);
+        System.out.println("This is the time end range to leave: " + finalT);
+
         try{
 
             Connection conn = DBConnect.getConnection();
@@ -190,6 +248,9 @@ public class BookFlightsController implements Initializable {
             PreparedStatement pr = conn.prepareStatement(queryString);
             pr.setInt(1, sourceId);
             pr.setInt(2, destId);
+            pr.setString(3, departD);
+            pr.setString(4, departT);
+            //pr.setString(5, finalT);
 
             ResultSet resultSet = pr.executeQuery();
 
@@ -206,7 +267,7 @@ public class BookFlightsController implements Initializable {
             this.flightsListView.setItems(this.flightsData);
 
            this.flightsListView.setCellFactory(param -> new Cell());
-          //  System.out.println("First flight: " + flightsData.get(0).getNAME());
+            //System.out.println("First flight: " + flightsData.get(0).getNAME());
             //System.out.println("Second flight: " + flightsData.get(1).getNAME());
 
             pr.close();
@@ -274,9 +335,9 @@ public class BookFlightsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         toChoiceBox.getItems().addAll("Atlanta", "New York", "Las Vegas", "Los Angeles", "Miami");
-        toChoiceBox.setValue("Atlanta");
+        toChoiceBox.setValue("Choose");
         fromChoiceBox.getItems().addAll("Atlanta", "New York", "Las Vegas", "Los Angeles", "Miami");
-        fromChoiceBox.setValue("New York");
+        fromChoiceBox.setValue("Choose");
 
 
 
@@ -285,12 +346,16 @@ public class BookFlightsController implements Initializable {
     }
 
 
-    public void getBUserName(String username){
+    public void getBUserName(String username, String fName, String lName){
         this.isLoggedIn = true;
 
 
         this.username = username;
+        this.fName =fName;
+        this.lName =lName;
         System.out.println("This si the ticket id from getBPassengerInfo method: "+ this.username);
+        System.out.println("This si the ticket id from getBPassengerInfo method: "+ this.fName);
+        System.out.println("This si the ticket id from getBPassengerInfo method: "+ this.lName);
 
 
     }

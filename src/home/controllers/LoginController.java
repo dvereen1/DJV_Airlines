@@ -126,7 +126,7 @@ public class LoginController implements Initializable {
 
 
 
-;
+
 
 
                     conn.close();
@@ -151,7 +151,7 @@ public class LoginController implements Initializable {
                 System.out.println("this is the ticketid: " + ticketId);*/
 
 
-                control.getPassengerInfo(fName, lName, username);
+                control.getPassengerInfo(username, fName, lName);
 
                // passengerStage.setResizable(false);
                 passengerStage.show();
