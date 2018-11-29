@@ -6,8 +6,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <content url="jar://$USER_HOME$/Downloads/fontawesomefx-fontawesome-4.7.0-9.1.2.jar!/" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="11.0" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="fontawesomefx-commons-9.1.2" level="project" />
+    <orderEntry type="library" name="jfoenix-9.0.6" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

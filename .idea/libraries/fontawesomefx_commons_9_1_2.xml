@@ -4,7 +4,7 @@
       <root url="jar://$USER_HOME$/Downloads/jar_files/fontawesomefx-commons-9.1.2.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jar_files/fontawesomefx-fontawesome-4.7.0-9.1.2.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/sqlite-jdbc-3.23.1.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/jfoenix-9.0.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jbcrypt-0.3m.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
