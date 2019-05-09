@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="608.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.home.controllers.AdminController">
+   <children>
+      <TabPane prefHeight="608.0" prefWidth="989.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Passengers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="142.0" prefHeight="507.0" prefWidth="818.0">
+                           <children>
+                              <TableView fx:id="passengerTableView" prefHeight="507.0" prefWidth="825.0">
+                                <columns>
+                                  <TableColumn fx:id="custId" prefWidth="48.0" text="ID" />
+                                  <TableColumn fx:id="custFName" prefWidth="115.0" text="First Name" />
+                                    <TableColumn fx:id="custLName" prefWidth="180.0" text="Last Name" />
+                                    <TableColumn fx:id="custEmail" prefWidth="265.0" text="Email" />
+                                    <TableColumn fx:id="custTicketId" minWidth="0.0" prefWidth="209.0" text="Ticket ID" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="507.0" prefWidth="142.0" spacing="5.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="163.0" />
+                              <JFXButton buttonType="RAISED" onAction="#loadPassengersData" style="-fx-background-color: #4286F4#4286F4;" text="Load Passengers" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="64.0" onAction="#registerPassenger" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #4286F4#4286F4;" text="Register &#10;Passenger&#10;" textAlignment="CENTER" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="64.0" onAction="#logOut" prefHeight="27.0" prefWidth="123.5" style="-fx-background-color: #4286F4#4286F4;" text="Log Out" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Flights">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="144.0" prefHeight="509.0" prefWidth="817.0">
+                           <children>
+                              <TableView fx:id="flightsTableView" prefHeight="491.0" prefWidth="840.0">
+                                <columns>
+                                  <TableColumn fx:id="flightIdCol" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="flightNameCol" prefWidth="91.0" text="Name" />
+                                    <TableColumn fx:id="flightSourceIdCol" prefWidth="83.0" text="Source ID" />
+                                    <TableColumn fx:id="flightDestIdCol" prefWidth="75.0" text="Dest. ID" />
+                                    <TableColumn fx:id="flightDepartDateCol" prefWidth="120.0" text="Depart Date" />
+                                    <TableColumn fx:id="flightDepartTimeCol" prefWidth="121.0" text="Depart Time" />
+                                    <TableColumn fx:id="flightArrivalDateCol" prefWidth="121.0" text="Arrival Date" />
+                                    <TableColumn fx:id="flightArrivalTimeCol" prefWidth="130.0" text="Arrival Time" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="573.0" prefWidth="145.0" spacing="10.0">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="150.0" text="Add Flight">
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXTextField fx:id="flightId" promptText="ID">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXTextField fx:id="flightName" layoutX="10.0" layoutY="27.0" promptText="Name">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="sourceId" promptText="Source ID">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXComboBox>
+                              <JFXComboBox fx:id="destId" promptText="Destination ID">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXComboBox>
+                              <JFXTextField fx:id="price" layoutX="15.0" layoutY="148.0" promptText="Price">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <JFXDatePicker fx:id="departDate" defaultColor="#4286f4" prefHeight="29.0" prefWidth="141.0" promptText="Departure Date">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </JFXDatePicker>
+                              <JFXDatePicker fx:id="arrivalDate" defaultColor="#f4b042" layoutX="10.0" layoutY="185.0" prefHeight="29.0" prefWidth="141.0" promptText="Arrival Date">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </JFXDatePicker>
+                              <JFXTimePicker fx:id="departTime" defaultColor="#4286f4" promptText="Departure Time">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </JFXTimePicker>
+                              <JFXTimePicker fx:id="arrivalTime" defaultColor="#f4b042" promptText="Arrival Time">
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </JFXTimePicker>
+                              <JFXButton buttonType="RAISED" onAction="#addFlights" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Add Flight" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="341.0" onAction="#clearFields" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Clear Form" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="378.0" onAction="#loadFlightData" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Load Data" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                              <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="415.0" onAction="#deteleData" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Delete Flight" textFill="WHITE">
+
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                               <JFXButton buttonType="RAISED" layoutX="15.0" layoutY="432.0" onAction="#logOut" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4;" text="Log Out" textFill="WHITE">
+
+                                   <VBox.margin>
+                                       <Insets left="5.0" />
+                                   </VBox.margin>
+                               </JFXButton>
+
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Reports">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="576.0" prefWidth="989.0">
+                           <children>
+                              <VBox prefHeight="145.0" prefWidth="186.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Select Month and Year">
+                                       <VBox.margin>
+                                          <Insets left="5.0" top="15.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Line endX="55.5" startX="-100.0" />
+                                    <JFXDatePicker fx:id="reportDP" />
+                                    <JFXButton fx:id="reportBtn" buttonType="RAISED" onAction="#getReport" ripplerFill="WHITE" style="-fx-background-color: #4286F4#4286F4 #4286F4#4286F4;" text="Generate Report" textFill="WHITE" />
+                                    <JFXButton buttonType="RAISED" onAction="#logOut" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: #4286F4#4286F4;" text="Log Out" textFill="WHITE" />
+                                    <Label text="Promotions">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXButton buttonType="RAISED" layoutX="25.0" layoutY="139.0" onAction="#fFPromo" prefHeight="27.0" prefWidth="118.0" style="-fx-background-color: #4286F4#4286F4;" text="Frequent Flier" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="15.0" />
+                                 </padding>
+                              </VBox>
+                              <Pane prefHeight="576.0" prefWidth="802.0">
+                                 <children>
+                                    <JFXTextArea fx:id="reportTA" layoutX="14.0" layoutY="90.0" prefHeight="391.0" prefWidth="333.0" />
+                                    <Label fx:id="monthLbl" layoutX="116.0" layoutY="40.0" prefHeight="29.0" prefWidth="152.0" text="Month">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="100.0" layoutX="167.0" layoutY="68.0" startX="-112.0" />
+                                    <LineChart fx:id="reportLC" layoutX="358.0" layoutY="69.0" prefHeight="414.0" prefWidth="433.0" title="Revenue">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
