@@ -1,10 +1,10 @@
-#DJV_Airlines
+# DJV_Airlines
 
 A simple airline registration system that facilaties viewing available flights to arguably the top five destinations in the United States, selecting tickets for a desired flight with specific meal and luggage options, the viewing of purchased tickets and the ability to cancel purchases. An administration dashboard
 is also available to view passenger lists, add flights and tickets to the airline's database and generate monthly revenue reports.
 
 
-##System and other requirements
+## System and other requirements
 For a full in-depth look at system requirements for JavaFX please read: https://www.oracle.com/technetwork/java/javafx/system-requirements-1-2-140252.html .
 
 I use Intellij IDEA CE as my IDE: https://www.jetbrains.com/idea/ .
@@ -25,14 +25,14 @@ controlsfx-9.0.0.jar, jfoenix-9.0.6.jar. (located in DJV_Airlines/jar_files)
 via [Settings -> JAR/FXML Manager -> Search repositories] search as follows: de.jensd:fontawesomefx-commons:9.1.2, de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2 .
 
 
-##Project Structure
+## Project Structure
 Down the path src/main/java/home
 there are four main folders, **controllers**, in which each class is the controller of a single page in the application, **DB_Connection**, which holds the class that initiates the conntection to the SQLite database, **DB_Models**, in which each class is the model for a table stored in the airlines' database, and **fxml**, in which each file is the FXML markup of each page of the application. 
 
 The program is launched from DJV_Airlines/src/main/java/Main.java
 
 
-##Future Changes and Updates
+## Future Changes and Updates
 The last time I actively worked on this code was right up until this project's due date at the end of my 2018 Fall semester. There are several issues such as buttons that were never given functionality due to time crunches, certain pages such as the layout of the tickets which can be printed are unappealing, the lack of in-depth error handling, etc. During my spare time, I plan to go through the code, learn more, and correct the above issues and more as well as add any additional, practical functionality along with possibly changing certain page layouts and color schemes.
 
 
