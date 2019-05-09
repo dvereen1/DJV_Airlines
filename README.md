@@ -10,7 +10,7 @@ For a full in-depth look at system requirements for JavaFX please read: https://
 I use Intellij IDEA CE as my IDE: https://www.jetbrains.com/idea/ .
 External JAR's imported into the project are as follows: 
 controlsfx-9.0.0.jar, jfoenix-9.0.6.jar, jbcrypt-0.3m.jar, sqlite-jdbc-3.23.1.jar, and others 
-(located in DJV_Airlines/jar_files)
+(located in **DJV_Airlines/jar_files**)
 
 Java SE 10 or above, I have Java SE 11 installed on my system: https://www.oracle.com/technetwork/java/javase/downloads/index.html .
 
@@ -21,15 +21,15 @@ https://openjfx.io/openjfx-docs/ .
 Gluon SceneBuilder was used to stich together the UI:
 https://gluonhq.com/products/scene-builder/ .
 External JAR's imported into SceneBuilder via [ Settings -> JAR/FXML Manager -> Add Library/FXML from file system ] are as follows:
-controlsfx-9.0.0.jar, jfoenix-9.0.6.jar. (located in DJV_Airlines/jar_files)
+controlsfx-9.0.0.jar, jfoenix-9.0.6.jar. (located in **DJV_Airlines/jar_files**)
 via [Settings -> JAR/FXML Manager -> Search repositories] search as follows: de.jensd:fontawesomefx-commons:9.1.2, de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2 .
 
 
 ## Project Structure
-Down the path src/main/java/home
+Down the path **DJV_airlines/src/main/java/home**
 there are four main folders, **controllers**, in which each class is the controller of a single page in the application, **DB_Connection**, which holds the class that initiates the conntection to the SQLite database, **DB_Models**, in which each class is the model for a table stored in the airlines' database, and **fxml**, in which each file is the FXML markup of each page of the application. 
 
-The program is launched from DJV_Airlines/src/main/java/Main.java
+The program is launched from **DJV_Airlines/src/main/java/Main.java**
 
 
 ## Future Changes and Updates
